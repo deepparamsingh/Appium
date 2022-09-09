@@ -2,6 +2,8 @@ package Udemy.Appium;
 
 import java.net.URL;
 import java.net.MalformedURLException;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import io.appium.java_client.AppiumDriver;
@@ -39,6 +41,17 @@ public class HomePage {
 		driver=new AppiumDriver<MobileElement>(url,cap);
 		
 		System.out.println("Application Started...");
+		
+		driver.findElement(By.xpath("//android.widget.TextView[@text='Preference']")).click();
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Preference clicked...");
+		driver.quit();
+				
 	}
 
 }
