@@ -1,57 +1,68 @@
 package Udemy.Appium;
 
-import java.net.URL;
-import java.net.MalformedURLException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import Base.Testbase;
 
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
-
-public class HomePage {
+public class HomePage extends Testbase {
 	
-	static AppiumDriver<MobileElement> driver;
-
-	public static void main(String[] args) {
+	
+	//PageFactory
+		@FindBy(xpath = "//android.widget.TextView[@text='Preference']")
+		WebElement preference;
+	
 		
-		try {
-		openApp();
-		}
-		catch (Exception e) {
-			
-		}
+		@FindBy(xpath = "//android.widget.TextView[@text='3. Preference dependencies']")
+		WebElement preferenceDependencies;
+		
+		@FindBy(id = "android:id/checkbox")
+		WebElement wifiCheckbox;
+		
+		@FindBy(xpath = "//android.widget.TextView[@text='WiFi settings']")
+		WebElement wifiSettings;
+		
+		@FindBy(id = "android:id/edit")
+		WebElement wifiSettingValue;
+		
+		
+		@FindBy(xpath = "//android.widget.Button[@text='OK']")
+		WebElement wifiSettingAccept;
+		
+		
 	
-
-	}
 	
-	public static void openApp() throws MalformedURLException
+	
+	public HomePage()
 	{
-		DesiredCapabilities cap= new DesiredCapabilities();
-		cap.setCapability("deviceName", "honor 7A");
-		cap.setCapability("udid", "XUV3Y18823027827");
-		cap.setCapability("platformName", "Android");
-		cap.setCapability("platformVersion", "8.0.0");
-		cap.setCapability("appPackage", "io.appium.android.apis");
-		cap.setCapability("appActivity", "io.appium.android.apis.ApiDemos");
-		cap.setCapability("autoAcceptAlerts", true);
-		cap.setCapability("autoDismissAlerts", false);
-	
-		URL url= new URL("http://127.0.0.1:4723/wd/hub");
-		driver=new AppiumDriver<MobileElement>(url,cap);
-		
-		System.out.println("Application Started...");
-		
-		driver.findElement(By.xpath("//android.widget.TextView[@text='Preference']")).click();
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println("Preference clicked...");
-		driver.quit();
-				
+		PageFactory.initElements(driver, this);
 	}
+	
+	
+	
+	public void openHomepage()
+	{	
+		
+		//preference.click();
+		clickOn(driver, preference, 5);
+		System.out.println("Preference clicked...");
+		clickOn(driver, preferenceDependencies, 5);		
+		System.out.println("Preference Dependencies clicked...");
+		clickOn(driver, wifiCheckbox, 5);
+		System.out.println("Wifi CheckBox clicked...");
+		clickOn(driver, wifiSettings, 5);
+		System.out.println("WifiSettings TAB clicked...");
+		clickOn(driver, wifiSettings, 5);
+		System.out.println("Enter value in WifiSettings...");
+		sendKeys(driver, wifiSettingValue, 5, "Paramdeep");
+		System.out.println("WifiSettings value Entered...");
+		clickOn(driver, wifiSettingAccept, 5);
+		System.out.println("Wifisettings value ACCEPTED...");
+	}
+	
 
 }
+	
+	
+
