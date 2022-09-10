@@ -49,7 +49,7 @@ public class Testbase {
 		cap.setCapability("autoDismissAlerts", false);
 	
 		URL url= new URL("http://127.0.0.1:4723/wd/hub");
-		driver=new AppiumDriver<MobileElement>(url,cap);
+		driver=new AppiumDriver(url,cap);
 		
 		System.out.println("Application Started...");
 

@@ -3,13 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Udemy.Appium.HomePageTest">
+      <class name="Udemy.Appium.LongPressTest">
         <methods>
-          <include name="tearDown"/>
+          <include name="validateLongPressTest"/>
           <include name="setup"/>
-          <include name="validateh1HeadingTest"/>
         </methods>
-      </class> <!-- Udemy.Appium.HomePageTest -->
+      </class> <!-- Udemy.Appium.LongPressTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
